@@ -44,17 +44,6 @@ fs.readFile('./public/assets/db.json', "utf-8", function (err,data) {
 
 });
 
-app.delete("./api/notes/:id", function (request,response) {
-    console.log(request.params.id);
-    notes = notes.filter(function (notes) {
-        return notes.id != request.params.id;
-    });
-    fs.writeFile("./public/assets/db.json", JSON.stringify(notes), function (err) {
-        if (err) throw err;
-        response.json(notes);
-    });
-})
-
 app.listen(PORT, function () {
     console.log(`Listening on http://localhost:${PORT}`);
 });
